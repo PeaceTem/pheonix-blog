@@ -8,6 +8,7 @@ defmodule Blog.Posts do
 
   alias Blog.Posts.Post
   alias Blog.Comments
+  alias Blog.Posts
   @doc """
   Returns the list of posts.
 
@@ -109,5 +110,9 @@ defmodule Blog.Posts do
     |> Comments.create_comment()
   end
 
-  
+  def get_number_of_comments(post_id) do
+    post = Posts.get_post!(post_id) |> Repo.preload([:comments])
+    Enum.count(post.comments)
+  end
+
 end

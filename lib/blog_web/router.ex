@@ -40,7 +40,7 @@ defmodule BlogWeb.Router do
 
       live_dashboard "/dashboard", metrics: BlogWeb.Telemetry
       resources "/posts", BlogWeb.PostController do
-        post "/comment", PostController, :add_comment
+        post "/comment", BlogWeb.PostController, :add_comment
       end
     end
   end
